@@ -5,7 +5,6 @@ const app = express();
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const postRoutes = require('./routes/posts');
-const categoryRoutes = require('./routes/categories');
 const cors = require('cors');
 // const multer = require('multer');
 
@@ -43,12 +42,9 @@ connectDB();
 //   res.status(200).json('file has been uploaded!');
 // });
 
-app.use(cors());
-
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
-app.use('/categories', categoryRoutes);
 
 app.listen(PORT, () => {
   console.log(`server started on http://localhost:${PORT}`);

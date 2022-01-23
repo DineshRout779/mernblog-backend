@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-const PostSchema = new mongoose.Schema(
+const { Schema } = mongoose;
+const PostSchema = new Schema(
   {
     title: {
       type: String,
@@ -15,9 +15,10 @@ const PostSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
-    username: {
-      type: String,
+    userId: {
+      type: Schema.Types.ObjectId,
       required: true,
+      ref: 'User',
     },
     categories: {
       type: Array,
