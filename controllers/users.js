@@ -25,9 +25,8 @@ exports.deleteUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     try {
-      const deleted = await Post.find({ userId: req.params.id });
-      console.log(deleted);
-      // await User.findByIdAndDelete(req.params.id);
+      const deleted = await Post.deleteMany({ userId: req.params.id });
+      await User.findByIdAndDelete(req.params.id);
       res.status(200).json('user has been deleted!');
     } catch (err) {
       return res.status(500).json(err);
